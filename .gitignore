@@ -304,6 +304,10 @@ application.properties
 application.yml
 application-*.properties
 application-*.yml
+src/main/resources/application.properties
+src/main/resources/application.yml
+src/main/resources/application-*.properties
+src/main/resources/application-*.yml
 
 # 환경 변수 파일
 .env
