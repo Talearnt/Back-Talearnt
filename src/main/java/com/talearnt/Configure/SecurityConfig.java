@@ -1,6 +1,6 @@
 package com.talearnt.Configure;
 
-import com.talearnt.Login.JwtFilter;
+//import com.talearnt.Login.JwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,7 +20,9 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         );
 
-        http.addFilterBefore(new JwtFilter(), ExceptionTranslationFilter.class);
+        /* Resolves 상태로 Github에 업로드하지 않아 Login 관련 JWT Filter가 없습니다.
+        * Login 관련도 완벽히 완성될 경우에 해당 주석과 밑 주석을 제거하고 import 부분 주석도 삭제해주시길 바랍니다. */
+        //http.addFilterBefore(new JwtFilter(), ExceptionTranslationFilter.class);
 
         http.authorizeHttpRequests((authorize) ->
                 authorize.requestMatchers("/**").permitAll()
