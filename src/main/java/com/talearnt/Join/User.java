@@ -21,8 +21,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Id
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false,unique = true)
     private String userId;
 
     @Column(nullable = false,length = 50)
@@ -30,9 +29,6 @@ public class User {
 
     @Column(nullable = false, unique = true, length = 20)
     private String nickName;
-
-    @Column(nullable = false, length = 10)
-    private String name;
 
     @Column(nullable = false, length = 3)
     @Enumerated(EnumType.STRING)
