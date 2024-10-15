@@ -22,14 +22,13 @@ public class JoinController {
     }
 
     @PostMapping("/user")
-    String addUser(String userId, String pw, String nickName, String name, Gender gender, String phone, String joinType){
+    String addUser(String userId, String pw, String nickName, Gender gender, String phone, String joinType){
 
         User user = new User();
         user.setUserId(userId);
         //var hash = new BCryptPasswordEncoder().encode(pw);
         user.setPw(pw);
         user.setNickName(nickName);
-        user.setName(name);
         user.setGender(gender);
         user.setPhone(phone);
         user.setJoinType(joinType);
