@@ -1,5 +1,7 @@
 package com.talearnt.Join;
 
+import com.talearnt.Enums.Gender;
+import com.talearnt.Enums.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,19 +22,18 @@ public class JoinController {
     }
 
     @PostMapping("/user")
-    String addUser(String userId, String pw, String nickName, String name, String gender, String phone){
-        LocalDateTime now = LocalDateTime.now();
+    String addUser(String userId, String pw, String nickName, String name, Gender gender, String phone, String joinType){
+
         User user = new User();
-        user.userId = userId;
+        user.setUserId(userId);
         //var hash = new BCryptPasswordEncoder().encode(pw);
-        user.pw = pw;
-        user.nickName = nickName;
-        user.name = name;
-        user.gender = gender;
-        user.phone = phone;
-        user.firstJoin = now;
-        user.lastLogin = now;
-        user.authorities = "일반";
+        user.setPw(pw);
+        user.setNickName(nickName);
+        user.setName(name);
+        user.setGender(gender);
+        user.setPhone(phone);
+        user.setJoinType(joinType);
+        user.setAuthority(UserRole.USER);
         joinRepository.save(user);
 
         return "redirect:/";
