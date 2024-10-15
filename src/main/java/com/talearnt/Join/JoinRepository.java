@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface JoinRepository extends JpaRepository<User, String> {
 
-    Optional<User> findAllUserId(String userId);
+   // Optional<User> findAllUserId(String userId);
 }
