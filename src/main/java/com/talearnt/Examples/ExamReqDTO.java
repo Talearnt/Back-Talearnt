@@ -1,0 +1,24 @@
+package com.talearnt.Examples;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
+
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Builder
+@Component
+public class ExamReqDTO {
+
+    private String examId;
+    private String pw;
+    private String nickname;
+    private LocalDateTime createdAt;
+
+}
