@@ -364,5 +364,4 @@ out/
 
 .idea
 .gradle
-gradle/wrapper
 out/production
