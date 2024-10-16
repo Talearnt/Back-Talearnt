@@ -24,7 +24,8 @@ public class User {
     @Column(nullable = false, updatable = false, unique = true)
     private String userId;
 
-    @Column(nullable = false,length = 50)
+    //Beta 시 해싱 데이터값 길이 검증, 막아야 함.
+    @Column(nullable = false,length = 100)
     private String pw;
 
     @Column(nullable = false, unique = true, length = 20)
