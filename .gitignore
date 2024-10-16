@@ -358,3 +358,11 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+### gradle ###
+
+.idea
+.gradle
+gradle/wrapper
+out/production
