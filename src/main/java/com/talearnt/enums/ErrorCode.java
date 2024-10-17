@@ -1,4 +1,4 @@
-package com.talearnt.Enums;
+package com.talearnt.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.talearnt.Examples;
+package com.talearnt.examples;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,13 +1,11 @@
-package com.talearnt.Join;
+package com.talearnt.join;
 
-import com.talearnt.Enums.Gender;
-import com.talearnt.Enums.UserRole;
+import com.talearnt.enums.Gender;
+import com.talearnt.enums.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.time.LocalDateTime;
 
 @Controller
 @RequiredArgsConstructor

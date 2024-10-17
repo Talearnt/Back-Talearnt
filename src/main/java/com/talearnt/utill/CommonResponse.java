@@ -1,6 +1,6 @@
-package com.talearnt.Utill;
+package com.talearnt.utill;
 
-import com.talearnt.Enums.ErrorCode;
+import com.talearnt.enums.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

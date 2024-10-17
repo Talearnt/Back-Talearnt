@@ -1,8 +1,8 @@
-package com.talearnt.Examples;
+package com.talearnt.examples;
 
 
-import com.talearnt.Enums.ErrorCode;
-import com.talearnt.Utill.CommonResponse;
+import com.talearnt.enums.ErrorCode;
+import com.talearnt.utill.CommonResponse;
 import com.talearnt.swagger.annotions.UserNotFound;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
