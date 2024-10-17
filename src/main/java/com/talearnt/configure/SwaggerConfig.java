@@ -1,4 +1,4 @@
-package com.talearnt.Configure;
+package com.talearnt.configure;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

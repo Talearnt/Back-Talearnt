@@ -1,4 +1,4 @@
-package com.talearnt.Configure;
+package com.talearnt.configure;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
