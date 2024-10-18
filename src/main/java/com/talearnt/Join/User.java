@@ -1,4 +1,4 @@
-package com.talearnt.Join;
+package com.talearnt.join;
 
 import com.talearnt.Enums.Gender;
 import com.talearnt.Enums.UserRole;
@@ -29,7 +29,7 @@ public class User {
     private String pw;
 
     @Column(nullable = false, unique = true, length = 20)
-    private String nickName;
+    private String nickname;
 
     @Column(nullable = false, length = 3)
     @Enumerated(EnumType.STRING)
