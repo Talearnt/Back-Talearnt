@@ -1,6 +1,7 @@
-package com.talearnt.utill;
+package com.talearnt.util;
 
 import com.talearnt.enums.ErrorCode;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,15 @@ import org.springframework.http.ResponseEntity;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Schema(description = "Common API Response")
 public class CommonResponse<T> {
-
+    @Schema(description = "성공 여부", example = "true")
     private boolean isSuccess;
+    @Schema(description = "실제 데이터")
     private T data;
+    @Schema(description = "에러 코드", example = "null")
     private String errorCode;
+    @Schema(description = "에러 메시지", example = "null")
     private String errorMessage;
 
 

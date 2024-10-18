@@ -2,14 +2,14 @@ package com.talearnt;
 
 
 import com.talearnt.enums.ErrorCode;
-import com.talearnt.utill.CommonResponse;
+import com.talearnt.util.CommonResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
  * 연관된 Class = /Enums/ErrorCode,
- *              /Utill/ApiResponse
+ *              /Util/CommonResponse
  *
  * Exception 전역 관리하는 Class 입니다.
  * 이 곳에 Exception이 터질 요인들을 모아두고 관리합니다.
