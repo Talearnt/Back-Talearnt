@@ -1,10 +1,11 @@
-package com.talearnt.Examples;
+package com.talearnt.examples;
 
 
-import com.talearnt.Enums.ErrorCode;
-import com.talearnt.Utill.CommonResponse;
-import com.talearnt.swagger.annotions.UserNotFound;
+import com.talearnt.enums.ErrorCode;
+import com.talearnt.util.CommonResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -16,21 +17,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Tag(name = "example", description = "Swagger 사용 예제입니다.")
-@RestController
-@RequestMapping("/exam")
+@RestControllerV1
 @RequiredArgsConstructor
 public class ExampleController {
 
     private final ModelMapper mapper;
 
-    @GetMapping("/posts")
+    @GetMapping("/exam")
     @Operation(summary = "내용에 관한 요약은 여기에 적습니다",
             description = "내용에 대한 설명은 여기에 적습니다.",
-            tags = {"example"},
             responses = {
                     @ApiResponse(responseCode = "200", description = "로맨틱 성공적"),
                     @ApiResponse(responseCode = "400", description = "로맨틱 실패적")
             })
+
     public ResponseEntity<CommonResponse<List<ExamResDTO>>> getExams(){
 
         List<ExamResDTO> examList = new ArrayList<>();
@@ -42,15 +42,16 @@ public class ExampleController {
     }
 
 
-
     @PostMapping("/exam")
     @Operation(summary = "예제 수정 요약",
             description = "예제를 수정하는 내용입니다",
-            tags = {"예제 Tags"},
     responses = {
-            @ApiResponse(responseCode = "200", description = "성공적으로 예제의 정보를 바꿨습니다.")
+            @ApiResponse(responseCode = "200", description = "성공적으로 예제의 정보를 바꿨습니다."),
+            @ApiResponse(responseCode = "404", ref = "USER_NOT_FOUND"),
+            @ApiResponse(responseCode = "403", ref = "USER_SUSPENDED"),
+            @ApiResponse(responseCode = "400", ref = "DUPLICATE_USER"),
+            @ApiResponse(responseCode = "500", ref = "DB_CONNECTION_ERROR")
     })
-    @UserNotFound
     public ResponseEntity<CommonResponse<ExamResDTO>> updateExam(@RequestBody ExamReqDTO dto){
         Exam exam = mapper.map(dto, Exam.class);
         exam.setNickname("예제 닉네임4");

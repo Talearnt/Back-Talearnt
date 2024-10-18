@@ -1,5 +1,9 @@
-package com.talearnt.Enums;
+package com.talearnt.enums;
 
+import io.swagger.v3.oas.models.media.Content;
+import io.swagger.v3.oas.models.media.MediaType;
+import io.swagger.v3.oas.models.media.Schema;
+import io.swagger.v3.oas.models.responses.ApiResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -39,4 +43,18 @@ public enum ErrorCode {
 
     private final String code;
     private final String message;
+
+    // OpenAPI용 ApiResponse 생성 메서드
+    public ApiResponse getApiResponse() {
+        return new ApiResponse()
+                .description(this.getMessage())
+                .content(new Content().addMediaType("application/json;charset=UTF-8",
+                        new MediaType().schema(new Schema()
+                                .example("{ "+
+                                        "\n\t \"data\": null," +
+                                        "\n\t \"errorCode\": \"" + this.getCode() + "\"," +
+                                        "\n\t \"errorMessage\": \""+ this.getMessage() + "\"," +
+                                        "\n\t \"success\": false" +
+                                        "\n}"))));
+    }
 }

@@ -1,6 +1,6 @@
-package com.talearnt.Examples;
+package com.talearnt.examples;
 
-import com.talearnt.Enums.UserRole;
+import com.talearnt.enums.UserRole;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

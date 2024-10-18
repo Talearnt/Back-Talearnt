@@ -1,8 +1,6 @@
-package com.talearnt.Join;
+package com.talearnt.join;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 public interface JoinRepository extends JpaRepository<User, String> {
 
