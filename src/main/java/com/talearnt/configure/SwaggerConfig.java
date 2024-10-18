@@ -1,5 +1,6 @@
 package com.talearnt.configure;
 
+import com.talearnt.enums.ErrorCode;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -12,11 +13,14 @@ public class SwaggerConfig {
     public OpenAPI openAPI() {
 
         Components components = new Components();
-
-
-        return new OpenAPI()
-                .components(components)
+        OpenAPI openApi = new OpenAPI().components(components)
                 .info(apiInfo());
+
+        for (ErrorCode errorCode : ErrorCode.values()){
+            openApi.getComponents().addResponses(errorCode.name(), errorCode.getApiResponse());
+        }
+
+        return openApi;
     }
 
     private Info apiInfo() {
