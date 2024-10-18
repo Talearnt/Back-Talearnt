@@ -1,4 +1,4 @@
-package com.talearnt.Utill;
+package com.talearnt.util;
 
 import com.talearnt.Enums.ErrorCode;
 import lombok.AllArgsConstructor;

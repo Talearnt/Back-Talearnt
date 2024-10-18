@@ -2,7 +2,7 @@ package com.talearnt;
 
 
 import com.talearnt.Enums.ErrorCode;
-import com.talearnt.Utill.CommonResponse;
+import com.talearnt.Util.CommonResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
