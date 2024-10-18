@@ -1,40 +1,49 @@
-package com.talearnt.Join;
+package com.talearnt.join;
 
+import com.talearnt.Enums.ErrorCode;
 import com.talearnt.Enums.Gender;
 import com.talearnt.Enums.UserRole;
+import com.talearnt.Examples.Exam;
+import com.talearnt.Examples.ExamReqDTO;
+import com.talearnt.Examples.ExamResDTO;
+import com.talearnt.swagger.annotions.UserNotFound;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class JoinController {
 
     //private final JoinRepository joinRepository;
 
-    @GetMapping("/join")
-    String join(){
 
-        return "join.html";
-    }
+    @PostMapping("/api/join")
+    String addUser(@RequestBody JoinReqDTO joinReqDTO){
 
-    @PostMapping("/user")
-    String addUser(String userId, String pw, String nickName, Gender gender, String phone, String joinType){
 
-        User user = new User();
-        user.setUserId(userId);
+
         //var hash = new BCryptPasswordEncoder().encode(pw);
-        user.setPw(pw);
-        user.setNickName(nickName);
-        user.setGender(gender);
-        user.setPhone(phone);
-        user.setJoinType(joinType);
-        user.setAuthority(UserRole.USER);
+
     //    joinRepository.save(user);
 
         return "redirect:/";
     }
+
+//    @PostMapping("/api/join")
+//    public ResponseEntity<com.talearnt.Util.CommonResponse<ExamResDTO>> updateExam(@RequestBody JoinReqDTO dto){
+//        User user = mapper.map(dto, User.class);
+//        exam.setNickname("예제 닉네임4");
+//        ExamResDTO resDto = mapper.map(exam,ExamResDTO.class);
+//        if (resDto.getNickname().equals(dto.getNickname())){
+//            return com.talearnt.Util.CommonResponse.success(resDto);
+//        }else{
+//            return com.talearnt.Util.CommonResponse.error(ErrorCode.USER_NOT_FOUND);
+//        }
+//    }
 }
