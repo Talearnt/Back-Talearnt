@@ -2,8 +2,7 @@ package com.talearnt.examples;
 
 
 import com.talearnt.enums.ErrorCode;
-import com.talearnt.utill.CommonResponse;
-import com.talearnt.swagger.annotions.UserNotFound;
+import com.talearnt.util.CommonResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -42,15 +41,16 @@ public class ExampleController {
     }
 
 
-
     @PostMapping("/exam")
     @Operation(summary = "예제 수정 요약",
             description = "예제를 수정하는 내용입니다",
-            tags = {"예제 Tags"},
     responses = {
-            @ApiResponse(responseCode = "200", description = "성공적으로 예제의 정보를 바꿨습니다.")
+            @ApiResponse(responseCode = "200", description = "성공적으로 예제의 정보를 바꿨습니다."),
+            @ApiResponse(responseCode = "404", ref = "USER_NOT_FOUND"),
+            @ApiResponse(responseCode = "403", ref = "USER_SUSPENDED"),
+            @ApiResponse(responseCode = "400", ref = "DUPLICATE_USER"),
+            @ApiResponse(responseCode = "500", ref = "DB_CONNECTION_ERROR")
     })
-    @UserNotFound
     public ResponseEntity<CommonResponse<ExamResDTO>> updateExam(@RequestBody ExamReqDTO dto){
         Exam exam = mapper.map(dto, Exam.class);
         exam.setNickname("예제 닉네임4");

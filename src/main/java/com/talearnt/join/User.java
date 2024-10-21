@@ -21,7 +21,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(nullable = false, updatable = false, unique = true)
+    @Column(nullable = false, updatable = false,unique = true)
     private String userId;
 
     //Beta 시 해싱 데이터값 길이 검증, 막아야 함.
@@ -29,7 +29,7 @@ public class User {
     private String pw;
 
     @Column(nullable = false, unique = true, length = 20)
-    private String nickName;
+    private String nickname;
 
     @Column(nullable = false, length = 3)
     @Enumerated(EnumType.STRING)
