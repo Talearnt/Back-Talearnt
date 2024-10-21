@@ -19,11 +19,13 @@ public class JoinService {
     public User registerUser(JoinReqDTO joinReqDTO) {
 
         String encodedPassword = passwordEncoder.encode(joinReqDTO.getPw());
-
+        joinReqDTO.setPw(encodedPassword);
+        joinReqDTO.setNickname("닉네임4");
         User user = mapper.map(joinReqDTO,User.class);
 
         return joinRepository.save(user);
     }
+
 
 //    public boolean existsByUserId(String userId) {
 //        return joinRepository.existsByUserId(userId);
