@@ -1,13 +1,10 @@
-<<<<<<<< HEAD:src/main/java/com/talearnt/utill/CommonResponse.java
-package com.talearnt.utill;
-
-import com.talearnt.enums.ErrorCode;
-========
 package com.talearnt.util;
 
 import com.talearnt.enums.ErrorCode;
+
+import com.talearnt.enums.ErrorCode;
 import io.swagger.v3.oas.annotations.media.Schema;
->>>>>>>> origin/feat/TALEARNT-59:src/main/java/com/talearnt/util/CommonResponse.java
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
