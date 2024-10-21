@@ -1,7 +1,7 @@
 package com.talearnt.join;
 
-import com.talearnt.Enums.Gender;
-import com.talearnt.Enums.UserRole;
+import com.talearnt.enums.Gender;
+import com.talearnt.enums.UserRole;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
