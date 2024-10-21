@@ -26,14 +26,14 @@ public class PhoneVerification {
     private String verificationCode;
 
     @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
-    private Integer isPhoneVerified;
+    private Boolean isPhoneVerified;
 
     @Column(nullable = true, updatable = false)
     @CreationTimestamp //insert 쿼리가 발생했을 때 현재 시간값 적용
     private LocalDateTime createdAt;
 
     @Builder
-    public PhoneVerification(String userId, String phone, String verificationCode, Integer isPhoneVerified) {
+    public PhoneVerification(String userId, String phone, String verificationCode, Boolean isPhoneVerified) {
         this.userId = userId;
         this.phone = phone;
         this.verificationCode = verificationCode;

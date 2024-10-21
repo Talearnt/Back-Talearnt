@@ -7,9 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class VerificationReqDTO {
+public class VerifyCodeReqDTO {
     private String userId;
-    private String phone;
-    private String verificationCode;
-    private Boolean isPhoneVerified;
+    private String inputCode;
 }
