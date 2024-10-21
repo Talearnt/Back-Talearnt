@@ -1,4 +1,4 @@
-package com.talearnt.Examples;
+package com.talearnt.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,14 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
 @Builder
 @Component
-public class ExamResDTO {
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+public class LoginReqDTO {
 
-    private String examId;
-    private String nickname;
+    private String userId;
+    private String pw;
 
 }

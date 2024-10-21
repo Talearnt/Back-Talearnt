@@ -29,16 +29,18 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+	implementation 'net.nurigo:sdk:4.3.0'	//coolsms gradle 추가
 
 	implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
 	implementation 'io.jsonwebtoken:jjwt-gson:0.12.5'
 	implementation 'io.jsonwebtoken:jjwt-impl:0.12.5'
 
-	//Swagger
+	// Swagger
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
-
-	//DTO <-> Entity 변환 Mapper
+	// DTO <-> Entity 변환 Mapper
 	implementation 'org.modelmapper:modelmapper:3.1.1'
+	// Dynamic Qeury를 위한 Query DSL
+	implementation 'com.querydsl:querydsl-jpa:5.0.0'
 
 }
 
