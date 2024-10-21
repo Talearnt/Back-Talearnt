@@ -2,7 +2,7 @@ package com.talearnt.Examples;
 
 
 import com.talearnt.Enums.ErrorCode;
-import com.talearnt.Util.CommonResponse;
+import com.talearnt.util.CommonResponse;
 import com.talearnt.swagger.annotions.UserNotFound;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
