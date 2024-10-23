@@ -18,9 +18,10 @@ public enum ErrorCode {
 
     // 사용자 관련 오류
     USER_NOT_FOUND("404-USER-01", "해당 회원을 찾을 수 없습니다."),
-    DUPLICATE_USER("400-USER-02", "해당 닉네임은 이미 존재합니다."),
-    INVALID_USER_INPUT("400-USER-03", "입력된 사용자 정보가 유효하지 않습니다."),
+    DUPLICATE_USER_ID("400-USER-02", "해당 아이디는 이미 존재합니다."),
+    INVALID_USER_INPUT("400-USER-03", "아이디 또는 비밀번호를 확인해주세요!"),
     USER_SUSPENDED("403-USER-04", "이 계정은 정지 상태입니다."),
+    DUPLICATE_USER_NICKNAME("400-USER-05", "해당 닉네임은 이미 존재합니다."),
 
     // 데이터베이스 관련 오류
     DB_CONNECTION_ERROR("500-DB-01", "데이터 베이스에 연결 실패했습니다."),
