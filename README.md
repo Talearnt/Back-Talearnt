@@ -128,30 +128,52 @@ DevOps : AWS(S3,EC2,RDS), Azure Database(Devlop전용), Docker, Jenkins, Gradle,
 </details>
 
 <details>
-    <summary>DTO 만드는 규칙 2️⃣</summary>
+    <summary>Entity,DTO 만드는 규칙 2️⃣</summary>
 
-    DTO는 데이터 불변성을 지키기 위해 Builder 패턴을 적용합니다.
-    @Setter는 사용하지 않습니다.
+```text
+Entity는 Getter,Setter를 사용합니다.
+Builder 패턴을 적용시키지 않은 이유는, JPA에서는 Setter로 값이 변경되기 때문입니다.
+그리고 Builder 패턴은 객체가 불변해야 하지만, 
+Entity는 대부분 값이 변경되어야 하는 조건이라서 Builder 패턴과 어울리지 않습니다.
 
-    1. Request, Response DTO 구분을 짓습니다.
-    ex) examReqDTO,examResDTO
+Entity를 만들 때, @Entity 어노테이션을 사용하고, Entity라는 이름은 명시하지 않습니다.
+테이블 객체와 동일한 이름이면 됩니다.
+예를 들어 user 테이블이 있을 경우
+UserEntity 가 아닌 User면 충분합니다.
+
+big_category 테이블이 있다고 가정한다면,
+BigCategoryEntity 가 아닌 BigCategory로 만들면 됩니다.
+
+이렇게 관리하면 아래와 같은 효과를 기대할 수 있습니다.
+-직관적인 이름으로 Entity Class임을 알 수 있습니다.
+-데이터베이스와 연결이 쉬워집니다.
+```
+
+
+```text
+DTO는 데이터 불변성을 지키기 위해 Builder 패턴을 적용합니다.
+@Setter는 사용하지 않습니다.
+
+1. Request, Response DTO 구분을 짓습니다.
+ex) examReqDTO,examResDTO
     
-    2. 두 개의 DTO 멤버 변수가 같다면 DTO로 이름을 짓습니다
-    ex) examDTO
+2. 두 개의 DTO 멤버 변수가 같다면 DTO로 이름을 짓습니다
+ex) examDTO
     
-    요청은 필요하지만 응답은 필요가 없거나, 요청은 없지만 응답만 필요할 경우
-    1번 네이밍 규칙을 지킵니다.
-    ex 1) examReqDTO 만 생성
-    ex 2) examResDTO 만 생성
+요청은 필요하지만 응답은 필요가 없거나, 요청은 없지만 응답만 필요할 경우
+1번 네이밍 규칙을 지킵니다.
+ex 1) examReqDTO 만 생성
+ex 2) examResDTO 만 생성
 
-    Entity <-> DTO 변환 과정은 ModelMapper를 사용합니다.
-    변환 과정은 Service레이어에서 진행합니다.
+Entity <-> DTO 변환 과정은 ModelMapper를 사용합니다.
+변환 과정은 Service레이어에서 진행합니다.
 
-    이렇게 관리하면 아래와 같은 효과를 기대할 수 있습니다.
-    - 직관적인 이름으로 사용법을 쉽게 파악할 수 있습니다.
-    - 데이터 불변성으로 인해 데이터 신뢰성이 올라갑니다.
-    - 반복적인 코드를 ModelMapper로 줄일 수 있습니다.
-    - 유지 보수를 좀 더 쉽게 할 수 있게 됩니다.
+이렇게 관리하면 아래와 같은 효과를 기대할 수 있습니다.
+- 직관적인 이름으로 사용법을 쉽게 파악할 수 있습니다.
+- 데이터 불변성으로 인해 데이터 신뢰성이 올라갑니다.
+- 반복적인 코드를 ModelMapper로 줄일 수 있습니다.
+- 유지 보수를 좀 더 쉽게 할 수 있게 됩니다.
+```
 </details>
 
 <details>
@@ -164,12 +186,45 @@ DevOps : AWS(S3,EC2,RDS), Azure Database(Devlop전용), Docker, Jenkins, Gradle,
     - enums.ErrorCode Enum Class에 에러 코드 및 메세지 정의
     - GlobalExceptionHandler에 CustomException 추가
     - exception.Custom Exception Class 정의
+        Custom Exception을 정의할 때는 아래와 같은 방법을 사용합니다.
+        - 예상할 수 없는 범위의 Exception일 경우 RuntimeException을 상속합니다.
+        - 예상할 수 있는 범위의 Exception일 경우 Exception을 상속합니다.
+        - 하단에 존재하는 코드를 참고하여 내부 코드를 작성합니다.
     - CommonResponseEntity를 사용하여 일관된 데이터 프레임 전송
 
     이렇게 관리하면 아래와 같은 효과를 기대할 수 있습니다.
     - FE와 에러 코드 공유로 ErrorCode에 대한 질문을 방지할 수 있습니다.
     - 코드 재사용성이 증가합니다.
     - 일관된 에러코드 및 메세지 전송 가능합니다.
+    - 한 곳에서 Exception을 관리하기 때문에 유지 보수가 뛰어납니다.
+    - throws를 이용하여 편리하게 Exception을 발생시킬 수 있습니다.
+
+```java
+/*
+ * 내부 코드
+ * RuntimeException, Exception 모두 내부 코드는 동일합니다.
+ * */
+import com.talearnt.enums.ErrorCode;
+
+public class ExceptionName extends RuntimeException{
+    private final ErrorCode errorCode;
+
+    public ExceptionName(String msg){
+        super(msg);
+        this.errorCode = ErrorCode.해당하는Error;
+    }
+
+    public ExceptionName(String msg,Throwable cause){
+        super(msg,cause);
+        this.errorCode = ErrorCode.해당하는Error;
+    }
+
+    public ErrorCode getErrorCode(){
+        return errorCode;
+    }
+
+}
+```
 </details>
 <details>
     <summary>Common Response Entity 사용 4️⃣</summary>
