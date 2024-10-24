@@ -1,0 +1,6 @@
+name : talearnt
+services:
+  server:
+    build: ./
+    ports:
+      - 80:80c
